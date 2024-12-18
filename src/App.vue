@@ -2,7 +2,7 @@
 <template data-theme="dracula">
   <nav>
     <RouterLink to="/">Quote Generator</RouterLink>
-    <RouterLink to="/about">Crypto </RouterLink>
+    <RouterLink to="/crypto">Crypto</RouterLink>
   </nav>
   <RouterView />
 </template>
