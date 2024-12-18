@@ -73,7 +73,7 @@ onMounted(() => {
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search here"
+        placeholder="Search here: e.g. BTCUSDT"
         class="bg-neutral border-none input input-bordered input-sm w-full max-w-xs mx-auto"
       />
       <ul
