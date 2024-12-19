@@ -3,6 +3,7 @@
   <nav>
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
+    <RouterLink to="/practice">Practice</RouterLink>
   </nav>
   <RouterView />
 </template>

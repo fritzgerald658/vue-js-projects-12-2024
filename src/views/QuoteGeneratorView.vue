@@ -1,5 +1,4 @@
 <script setup>
-import AddToFav from "../../components/AddToFav.vue";
 import { onBeforeMount, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 const quote = ref("");
