@@ -47,6 +47,7 @@ onMounted(async () => {
     <SearchTextbox
       v-model:search-query="searchQuery"
       placeholder="Search here: e.g. BTCUSDT"
+      class="bg-neutral border-none input input-bordered input-sm w-full max-w-xs mx-auto"
     />
     <ul
       v-if="searchQuery"
