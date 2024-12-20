@@ -4,6 +4,7 @@
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
     <RouterLink to="/practice">Practice</RouterLink>
+    <RouterLink to="/crypto_news">Crypto News</RouterLink>
   </nav>
   <RouterView />
 </template>

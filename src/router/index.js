@@ -18,6 +18,14 @@ const router = createRouter({
       component: () => import("../views/CryptoView.vue"),
     },
     {
+      path: "/crypto_news",
+      name: "crypto_news",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/CryptoNews.vue"),
+    },
+    {
       path: "/practice",
       name: "practice",
       // route level code-splitting

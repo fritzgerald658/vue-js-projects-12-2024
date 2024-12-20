@@ -2,6 +2,7 @@
 import getCryptoSymbols from "@/assets/js/getCryptoSymbol.js";
 import getCryptoPrice from "@/assets/js/getCryptoPrice.js";
 import getTopCoinPrices from "@/assets/js/getTopCoinPrices.js";
+import getCryptoNews from "@/assets/js/getCryptoNews.js";
 import { computed, onBeforeMount, onMounted, ref } from "vue";
 import SearchTextbox from "../../components/SearchTextbox.vue";
 import Loader from "../../components/Loader.vue";

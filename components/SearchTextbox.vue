@@ -12,6 +12,5 @@ const updateSearchQuery = (e) => {
     @input="updateSearchQuery"
     type="text"
     :placeholder="placeholder"
-    class="bg-neutral border-none input input-bordered input-sm w-full max-w-xs mx-auto"
   />
 </template>
