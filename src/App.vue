@@ -1,10 +1,11 @@
 <script setup></script>
-<template data-theme="dracula">
+<template data-theme="dracula" class="bg-white">
   <nav>
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
     <RouterLink to="/crypto_news">Crypto News</RouterLink>
     <RouterLink to="/character_counter">Character Counter</RouterLink>
+    <RouterLink to="/playground">Playground</RouterLink>
   </nav>
   <RouterView />
 </template>

@@ -10,6 +10,14 @@
     <p v-else class="mt-2 text-[12px]">
       Remaining Characters: {{ charRemaining }}
     </p>
+    <progress class="rounded-lg" :value="charCount" :max="maxChars"></progress>
+    <br />
+    <button
+      class="text-[12px] mt-3 btn btn-sm btn-accent"
+      @click="inputText = ''"
+    >
+      Clear Input
+    </button>
   </div>
 </template>
 <script setup>
