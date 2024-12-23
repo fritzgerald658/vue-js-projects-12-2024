@@ -50,8 +50,8 @@
 <script setup>
 import { computed, ref } from "vue";
 
-const squareWidth = ref(0); // default value
-const squareHeight = ref(0); // default value
+const squareWidth = ref(); // default value
+const squareHeight = ref(); // default value
 const bgColor = ref("");
 const insideText = ref("");
 const bRadius = ref("");
@@ -65,6 +65,6 @@ const squareStyle = computed(() => ({
 </script>
 <style>
 .square {
-  transition: 0.3s;
+  transition: 0.6s;
 }
 </style>
