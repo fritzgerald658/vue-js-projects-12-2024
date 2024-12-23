@@ -3,8 +3,8 @@
   <nav>
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
-    <RouterLink to="/practice">Practice</RouterLink>
     <RouterLink to="/crypto_news">Crypto News</RouterLink>
+    <RouterLink to="/character_counter">Character Counter</RouterLink>
   </nav>
   <RouterView />
 </template>

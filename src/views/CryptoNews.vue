@@ -2,7 +2,6 @@
 import { onMounted, ref } from "vue";
 import getCryptoNews from "@/assets/js/getCryptoNews";
 
-const cors = require("cors");
 const newsTitle = ref([]);
 const newsDesciption = ref([]);
 const newsUrl = ref([]);
