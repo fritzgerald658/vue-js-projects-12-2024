@@ -1,39 +1,42 @@
 <template>
-  <div class="flex flex-row">
-    <div class="w-[18rem] bg-neutral h-[95vh] p-6">
+  <div class="flex flex-col md:flex-row">
+    <div class="w-[100vw] md:w-[18rem] bg-neutral p-6 mt-5">
       <input
-        class="input input-bordered input-sm w-full max-w-xs mt-5"
+        class="input input-bordered input-xs md:input-sm w-full max-w-xs"
         type="number"
         placeholder="Square Width"
         v-model="squareWidth"
       />
       <br />
       <input
-        class="input input-bordered input-sm w-full max-w-xs mt-5"
+        class="input input-bordered input-xs md:input-sm w-full max-w-xs mt-5"
         type="number"
         placeholder="Square Height"
         v-model="squareHeight"
-      /><input
-        class="input input-bordered input-sm w-full max-w-xs mt-5"
+      />
+      <br />
+      <input
+        class="input input-bordered input-xs md:input-sm w-full max-w-xs mt-5"
         type="number"
         placeholder="Border Radius"
         v-model="bRadius"
       />
+      <br />
       <input
-        class="input input-bordered input-sm w-full max-w-xs mt-5"
+        class="input input-bordered input-xs md:input-sm w-full max-w-xs mt-5"
         type="text"
         placeholder="Background color"
         v-model="bgColor"
-      />
+      /><br />
       <input
-        class="input input-bordered input-sm w-full max-w-xs mt-5"
+        class="input input-bordered input-xs md:input-sm w-full max-w-xs mt-5"
         type="text"
         placeholder="Inside Text"
         v-model="insideText"
-      />
+      /><br />
     </div>
     <div
-      class="editable-element flex justify-center items-center mt-9 w-full h-[80vh]"
+      class="editable-element flex justify-center items-center mt-9 w-full h-[50%] md:h-[80vh]"
     >
       <div
         class="square bg-black flex justify-center items-center"

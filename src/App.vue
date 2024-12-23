@@ -1,5 +1,5 @@
 <script setup></script>
-<template data-theme="dracula" class="bg-white">
+<template data-theme="dracula">
   <nav>
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
