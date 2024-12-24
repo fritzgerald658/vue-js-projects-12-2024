@@ -98,7 +98,7 @@ const squareStyle = computed(() => ({
 <template>
   <div class="flex flex-col md:flex-row">
     <div
-      class="w-[100vw] md:w-[18rem] h-[25vh] md:h-[95vh] overflow-y-auto md:border-r-[1px] md:border-y-[1px] px-16 md:px-6 p-6 mt-5"
+      class="w-[100vw] md:w-[18rem] h-[27vh] md:h-[95vh] overflow-y-auto md:border-r-[1px] md:border-y-[1px] px-16 md:px-6 p-6 mt-5"
     >
       <h1 class="font-bold">Dimension</h1>
       <!--Width-->
