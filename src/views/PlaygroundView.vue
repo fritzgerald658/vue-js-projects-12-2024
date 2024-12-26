@@ -3,11 +3,15 @@ import { computed, ref } from "vue";
 import { gsap } from "gsap";
 import Textbox from "../../components/Textbox.vue";
 import Select from "../../components/Select.vue";
+import Test from "../../components/Test.vue";
+import Chevdown from "../../components/Chevdown.vue";
+import ChevRight from "../../components/ChevRight.vue";
 
 const square = ref(null);
 const selectedAnimation = ref("");
 const startAnimation = ref(false);
-
+const dimension = ref(false);
+const borderStyle = ref(false);
 const squareWidth = ref(""); // default value
 const squareHeight = ref(""); // default value
 const bgColor = ref("");
@@ -17,6 +21,19 @@ const bStyle = ref("");
 const bColor = ref("");
 const bWidth = ref("0");
 const animationDuration = ref(2);
+const dropdowns = reactive({
+  dimensionDropwdown: false,
+  borderStyleDropdown: false,
+});
+
+
+const  = () => {
+  dimension.value = !dimension.value;
+  if (dimension.value === false) {
+    squareWidth.value = "";
+    squareHeight.value = "";
+  }
+};
 
 const handleChanged = () => {
   gsap.killTweensOf(square.value);
@@ -90,33 +107,48 @@ const squareStyle = computed(() => ({
 </script>
 <template>
   <div class="flex flex-col md:flex-row rounded-lg bg-base-300">
+    <!-- <Test /> -->
     <div
       class="w-[100vw] md:w-[18rem] h-[27vh] md:h-[95vh] overflow-y-auto bg-base-200 px-16 md:px-6 p-6 rounded-lg"
     >
-      <h1 class="font-bold">Dimension</h1>
-      <!--Height-->
-      <Textbox
-        textboxType="number"
-        label="Square Height (rem)"
-        labelClass="text-[12px]"
-        textboxClass="input input-bordered input-xs w-full max-w-xs"
-        v-model="squareHeight"
-        textboxPlaceholder="Type here"
-      />
-      <br />
+      <div
+        class="title flex flex-row gap-1 mb-0 cursor-pointer text-[14px] font-bold"
+        @click="test"
+      >
+        <div class="icon" v-if="dimension"><Chevdown /></div>
+        <div class="icon" v-else><ChevRight /></div>
+        Dimension
+      </div>
+      <div class="dimension-settings mb-5" v-if="dimension">
+        <!--Height-->
+        <Textbox
+          textboxType="number"
+          label="Square Height (rem)"
+          labelClass="text-[12px]"
+          textboxClass="input input-bordered input-xs w-full max-w-xs"
+          v-model="squareHeight"
+          textboxPlaceholder="Type here"
+        />
+        <!--Width-->
+        <Textbox
+          textboxType="number"
+          label="Square Width (rem)"
+          labelClass="text-[12px]"
+          textboxClass="input input-bordered input-xs w-full max-w-xs"
+          v-model="squareWidth"
+          textboxPlaceholder="Type here"
+        />
+      </div>
 
-      <!--Width-->
-      <Textbox
-        textboxType="number"
-        label="Square Width (rem)"
-        labelClass="text-[12px]"
-        textboxClass="input input-bordered input-xs w-full max-w-xs"
-        v-model="squareWidth"
-        textboxPlaceholder="Type here"
-      />
-      <br />
-
-      <h1 class="font-bold">Border Style</h1>
+      <!-- Border style -->
+      <div
+        class="title flex flex-row gap-1 mb-0 cursor-pointer text-[14px] font-bold"
+        @click="test"
+      >
+        <div class="icon" v-if="borderStyle"><Chevdown /></div>
+        <div class="icon" v-else><ChevRight /></div>
+        Border Style
+      </div>
       <!--Border Style-->
       <Select
         label="Border Style"
