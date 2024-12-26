@@ -21,10 +21,14 @@ const bStyle = ref("");
 const bColor = ref("");
 const bWidth = ref("0");
 const animationDuration = ref(2);
-const dropdowns = reactive({
-  dimensionDropwdown: false,
-  borderStyleDropdown: false,
-});
+
+const test = () => {
+  dimension.value = !dimension.value;
+  if (dimension.value === false) {
+    squareWidth.value = "";
+    squareHeight.value = "";
+  }
+};
 
 const handleChanged = () => {
   gsap.killTweensOf(square.value);
