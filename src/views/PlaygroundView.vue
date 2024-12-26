@@ -1,41 +1,34 @@
 <script setup>
 import { computed, ref } from "vue";
 import { gsap } from "gsap";
+import Textbox from "../../components/Textbox.vue";
+import Select from "../../components/Select.vue";
 
 const square = ref(null);
 const selectedAnimation = ref("");
+const startAnimation = ref(false);
 
-const squareWidth = ref(0); // default value
-const squareHeight = ref(0); // default value
+const squareWidth = ref(""); // default value
+const squareHeight = ref(""); // default value
 const bgColor = ref("");
 const insideText = ref("");
 const bRadius = ref("0");
 const bStyle = ref("");
 const bColor = ref("");
 const bWidth = ref("0");
+const animationDuration = ref(2);
 
-const onHover = () => {
-  gsap.to(square.value, {
-    rotation: 360,
-    duration: 2,
-    ease: "power2.inOut",
-    onComplete: () =>
-      gsap.set(square.value, {
-        rotation: 0,
-        duration: 2,
-        ease: "power2.inOut",
-      }),
-  });
-};
-
-const applyAnimations = () => {
+const handleChanged = () => {
   gsap.killTweensOf(square.value);
-
+  startAnimation.value = true;
+  applyAnimations();
+};
+const applyAnimations = () => {
   switch (selectedAnimation.value) {
     case "rotate":
       gsap.to(square.value, {
         rotation: 360,
-        duration: 2,
+        duration: animationDuration.value,
         ease: "power2.inOut",
         onComplete: () =>
           gsap.set(square.value, {
@@ -48,7 +41,7 @@ const applyAnimations = () => {
     case "scale":
       gsap.to(square.value, {
         scale: 1.5,
-        duration: 2,
+        duration: animationDuration.value,
         ease: "elastic",
         onComplete: () =>
           gsap.set(square.value, {
@@ -61,7 +54,7 @@ const applyAnimations = () => {
     case "bounce":
       gsap.to(square.value, {
         y: -100,
-        duration: 1,
+        duration: animationDuration.value,
         ease: "back",
         onComplete: () =>
           gsap.set(square.value, { y: 0, duration: 1, ease: "back" }),
@@ -70,7 +63,7 @@ const applyAnimations = () => {
     case "fade":
       gsap.to(square.value, {
         opacity: 0, // Fade out to 0 (fully transparent)
-        duration: 2, // Duration of the fade
+        duration: animationDuration.value, // Duration of the fade
         ease: "power1.inOut", // Ease function for smooth transition
         onComplete: () => {
           // Optionally, reset opacity after fading out
@@ -96,141 +89,124 @@ const squareStyle = computed(() => ({
 }));
 </script>
 <template>
-  <div class="flex flex-col md:flex-row">
+  <div class="flex flex-col md:flex-row rounded-lg bg-base-300">
     <div
-      class="w-[100vw] md:w-[18rem] h-[27vh] md:h-[95vh] overflow-y-auto md:border-r-[1px] md:border-y-[1px] px-16 md:px-6 p-6 mt-5"
+      class="w-[100vw] md:w-[18rem] h-[27vh] md:h-[95vh] overflow-y-auto bg-base-200 px-16 md:px-6 p-6 rounded-lg"
     >
       <h1 class="font-bold">Dimension</h1>
+      <!--Height-->
+      <Textbox
+        textboxType="number"
+        label="Square Height (rem)"
+        labelClass="text-[12px]"
+        textboxClass="input input-bordered input-xs w-full max-w-xs"
+        v-model="squareHeight"
+        textboxPlaceholder="Type here"
+      />
+      <br />
+
       <!--Width-->
-      <div class="editor-container">
-        <label for="" class="text-[12px]">Square Width (rem)</label>
-        <input
-          class="range range-xs"
-          type="range"
-          step="1"
-          max="60"
-          placeholder="Square Width"
-          v-model="squareWidth"
-        />
-        <span class="text-[12px]">{{ squareWidth }} rem</span>
-      </div>
+      <Textbox
+        textboxType="number"
+        label="Square Width (rem)"
+        labelClass="text-[12px]"
+        textboxClass="input input-bordered input-xs w-full max-w-xs"
+        v-model="squareWidth"
+        textboxPlaceholder="Type here"
+      />
       <br />
-      <div class="editor-container">
-        <!--Height-->
-        <label for="" class="text-[12px]">Square Height (rem)</label>
-        <input
-          class="range range-xs"
-          type="range"
-          step="1"
-          max="40"
-          placeholder="Square Height"
-          v-model="squareHeight"
-        />
-        <span class="text-[12px]">{{ squareHeight }} rem</span>
-      </div>
-      <br />
+
       <h1 class="font-bold">Border Style</h1>
       <!--Border Style-->
-      <div class="editor-container my-2">
-        <label for="border-style" class="text-[12px]">Border</label> <br />
-        <select
-          v-model="bStyle"
-          class="text-[12px] border-2 select select-xs w-full max-w-xs select-bordered"
-        >
-          <option disabled selected>Select border style</option>
-          <option value="none">None</option>
-          <option value="solid">Solid</option>
-          <option value="dashed">Dashed</option>
-          <option value="dotted">Dotted</option>
-          <option value="double">Double</option>
-          <option value="groove">Groove</option>
-          <option value="ridge">Ridge</option>
-          <option value="inset">Inset</option>
-          <option value="outset">Outset</option>
-          <option value="hidden">Hidden</option>
-        </select>
-      </div>
-      <div class="editor-container">
-        <label for="border-color" class="text-[12px]">Border Color</label>
-        <br />
-        <input
-          type="text"
-          placeholder="e.g. red"
-          class="input input-xs input-bordered w-full max-w-xs"
-          v-model="bColor"
-        />
-      </div>
-      <div class="editor-container my-2">
-        <!--Border Width-->
-        <label for="" class="text-[12px]">Border Width (px)</label>
-        <input
-          class="range range-xs"
-          type="range"
-          max="50"
-          placeholder="Border Width"
-          v-model="bWidth"
-        /><span class="text-[12px]">{{ bWidth }} px</span>
-      </div>
-      <div class="editor-container my-2">
-        <!--Border Radius-->
-        <label for="" class="text-[12px]">Border Radius (px)</label>
-        <input
-          class="range range-xs"
-          type="range"
-          max="500"
-          placeholder="Border Radius"
-          v-model="bRadius"
-        /><span class="text-[12px]">{{ bRadius }} px</span>
-      </div>
+      <Select
+        label="Border Style"
+        labelClass="text-[12px]"
+        selectClass="select select-bordered select-sm text-[12px] mr-2 my-2"
+        v-model="bStyle"
+        :options="[
+          { value: 'solid', text: 'Solid' },
+          { value: 'dotted', text: 'Dotted' },
+          { value: 'dashed', text: 'Dashed' },
+          { value: 'double', text: 'Double' },
+          { value: 'groove', text: 'Groove' },
+          { value: 'ridge', text: 'Ridge' },
+          { value: 'inset', text: 'Inset' },
+          { value: 'outset', text: 'Outset' },
+          { value: 'none', text: 'None' },
+          { value: 'hidden', text: 'Hidden' },
+        ]"
+      />
+      <!--Border color-->
+      <Textbox
+        textboxType="color"
+        label="Border Width (px)"
+        labelClass="text-[12px]"
+        textboxClass="p-1 h-8 w-14 block bg-neutral cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+        v-model="bColor"
+      /><br />
+      <!--Border Width-->
+      <Textbox
+        label="Border Width (px)"
+        labelClass="text-[12px]"
+        textboxClass="input input-bordered input-xs w-full max-w-xs"
+        v-model="bWidth"
+        textboxPlaceholder="Type here"
+      />
+      <br />
+      <!--Border Radius-->
+      <Textbox
+        textboxType="number"
+        label="Border Radius (px)"
+        labelClass="text-[12px]"
+        textboxClass="input input-bordered input-xs w-full max-w-xs"
+        v-model="bRadius"
+        textboxPlaceholder="Type here"
+      />
       <br />
       <h1 class="font-bold">Background</h1>
-      <div class="editor-container">
-        <!--Background Color-->
-        <label for="" class="text-[12px]">Color</label>
-        <input
-          class="text-[12px] input input-bordered input-xs w-full max-w-xs"
-          type="text"
-          placeholder="e.g. red or #0000"
-          v-model="bgColor"
-        />
-      </div>
+      <!--Background Color-->
+      <Textbox
+        textboxType="color"
+        label="Color"
+        labelClass="text-[12px]"
+        textboxClass="p-1 h-8 w-14 block bg-neutral cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+        v-model="bgColor"
+      />
       <br />
       <h1 class="font-bold">Content</h1>
-      <div class="editor-container">
-        <!--Content Text-->
-        <label for="" class="text-[12px]">Text</label>
-        <input
-          class="input input-bordered input-xs w-full max-w-xs"
-          type="text"
-          placeholder="Hello world"
-          v-model="insideText"
-        />
-      </div>
+      <Textbox
+        textboxType="text"
+        label="Text"
+        labelClass="text-[12px]"
+        textboxClass="input input-bordered input-xs w-full max-w-xs"
+        v-model="insideText"
+        textboxPlaceholder="Type here"
+      />
       <br />
       <!--Choose animation-->
       <h1 class="font-bold">Animation</h1>
-      <div class="editor-container">
-        <label for="animation-select" class="text-[12px]"
-          >Choose Animation:
-        </label>
-        <select
-          id="animation-select"
-          v-model="selectedAnimation"
-          class="select select-bordered select-sm text-[12px] mr-2 my-2"
-        >
-          <option value="rotate">Rotate</option>
-          <option value="scale">Scale</option>
-          <option value="bounce">Bounce</option>
-          <option value="fade">Fade</option>
-        </select>
-
-        <button
-          class="text-[12px] btn btn-accent btn-xs"
-          @click="applyAnimations()"
-        >
-          Animate
-        </button>
-      </div>
+      <Select
+        @change="handleChanged"
+        label="Animation Style"
+        labelClass="text-[12px]"
+        selectClass="select select-bordered select-sm text-[12px] mr-2 my-2"
+        v-model="selectedAnimation"
+        :options="[
+          { value: 'rotate', text: 'Rotate' },
+          { value: 'scale', text: 'Scale' },
+          { value: 'bounce', text: 'Bounce' },
+          { value: 'fade', text: 'Fade' },
+        ]"
+      />
+      <!--Animation Duration-->
+      <Textbox
+        textboxType="range"
+        label="Animation Duration (s)"
+        labelClass="text-[12px]"
+        textboxClass="range range-xs"
+        v-model="animationDuration"
+      />
+      <span>{{ animationDuration }}</span>
     </div>
     <!--Actual Square-->
     <div

@@ -1,6 +1,6 @@
 <script setup></script>
 <template data-theme="dracula">
-  <nav>
+  <nav class="mb-[2rem]">
     <RouterLink to="/">Quote Generator</RouterLink>
     <RouterLink to="/crypto">Crypto</RouterLink>
     <RouterLink to="/crypto_news">Crypto News</RouterLink>
