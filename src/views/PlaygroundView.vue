@@ -26,15 +26,6 @@ const dropdowns = reactive({
   borderStyleDropdown: false,
 });
 
-
-const  = () => {
-  dimension.value = !dimension.value;
-  if (dimension.value === false) {
-    squareWidth.value = "";
-    squareHeight.value = "";
-  }
-};
-
 const handleChanged = () => {
   gsap.killTweensOf(square.value);
   startAnimation.value = true;
