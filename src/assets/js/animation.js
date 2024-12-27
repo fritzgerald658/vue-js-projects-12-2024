@@ -1,4 +1,11 @@
 import { gsap } from "gsap";
+
+export const handleChanged = (square, startAnimation) => {
+  gsap.killTweensOf(square.value);
+  startAnimation.value = true;
+  applyAnimations();
+};
+
 const applyAnimations = (square, selectedAnimation) => {
   if (!square.value) {
     console.warn("No square element found.");
@@ -14,5 +21,3 @@ const applyAnimations = (square, selectedAnimation) => {
       });
   }
 };
-
-export default applyAnimations;

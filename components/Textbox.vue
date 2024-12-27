@@ -34,7 +34,8 @@ const props = defineProps({
 
 <template>
   <div class="settings-container my-3">
-    <label for="" :class="props.labelClass">{{ label }}</label>
+    <label for="" :class="props.labelClass">{{ label }}</label
+    ><span></span>
     <input
       :class="props.textboxClass"
       :type="props.textboxType"
