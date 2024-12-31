@@ -33,7 +33,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="settings-container my-3">
+  <div class="settings-container">
     <label for="" :class="props.labelClass">{{ label }}</label
     ><span></span>
     <input

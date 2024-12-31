@@ -1,7 +1,7 @@
 <!--Dimension Settings-->
 <template>
   <div
-    class="title flex flex-row gap-1 mb-0 cursor-pointer text-[14px] font-bold"
+    class="title flex items-center flex-row gap-1 mb-0 cursor-pointer text-[14px] font-bold"
     @click="toggleSettingsDropdown('dimensionDropdown')"
   >
     <div class="icon" v-if="dropdowns.dimensionDropdown"><Chevdown /></div>

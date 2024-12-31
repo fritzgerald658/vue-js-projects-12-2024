@@ -4,13 +4,14 @@ module.exports = {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./src/components/**/*.{vue,js,ts,jsx,tsx}",
+    "./components/**/*.{vue,js,ts,jsx,tsx}",
   ],
 
   theme: {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"], // Add your font
-        heading: ["Roboto", "sans-serif"], // Another example
+        heading: ["Titillium Web", "sans-serif"], // Another example
       },
     },
   },

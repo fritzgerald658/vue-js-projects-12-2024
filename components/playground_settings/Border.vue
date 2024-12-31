@@ -1,6 +1,6 @@
 <template>
   <div
-    class="title flex flex-row gap-1 mb-0 cursor-pointer text-[14px] font-bold"
+    class="title flex flex-row items-center gap-1 mb-0 cursor-pointer text-[14px] font-bold"
     @click="toggleSettingsDropdown('borderStyleDropdown')"
   >
     <div class="icon" v-if="dropdowns.borderStyleDropdown">
