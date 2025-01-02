@@ -6,7 +6,7 @@
     <RouterLink to="/crypto_news">Crypto News</RouterLink>
     <RouterLink to="/character_counter">Character Counter</RouterLink>
     <RouterLink to="/playground">Playground</RouterLink>
-    <RouterLink to="/gsap">Gsap</RouterLink>
+    <RouterLink to="/find_recipe">Find Recipe</RouterLink>
   </nav>
   <RouterView />
 </template>

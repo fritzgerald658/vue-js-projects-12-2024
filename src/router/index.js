@@ -42,12 +42,12 @@ const router = createRouter({
       component: () => import("../views/PlaygroundView.vue"),
     },
     {
-      path: "/gsap",
-      name: "gsap",
+      path: "/find_recipe",
+      name: "find_recipe",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/GsapView.vue"),
+      component: () => import("../views/RecipeFinderView.vue"),
     },
   ],
 });
